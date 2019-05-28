@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Listagem de Transações</title>
+</head>
+<body>
+<h2>Listagem</h2>
+
+<ul>
+	{% for transacao in transacoes %}
+		<li>{{ transacao.descricao }} - {{ transacao.valor }}
+			- {{ transacao.observacoes }} - {{ transacao.data }} 
+			<a href="{% url 'url_update' transacao.id %}">
+				<button type="button">Atualizar</button>
+			</a>
+			<a href="{% url 'url_delete' transacao.id %}">
+				<button type="button">Excluir</button>
+			</a>
+		</li>
+	{% endfor %}
+	<br/>
+	<a href="{% url 'url_novo' %}">
+		<button type="button">Novo</button>
+	</a>
+</ul>
+</body>
+</html>
