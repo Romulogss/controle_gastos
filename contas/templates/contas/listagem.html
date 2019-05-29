@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="pt-br">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport"
@@ -7,19 +8,24 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Listagem de Transações</title>
 </head>
-<body>
-<h2>Listagem</h2>
 
-<ul>
+<body>
+<h2>Transações</h2>
+<!-- tipos de marcadores: circle, disk, square -->
+<ul type="square">
 	{% for transacao in transacoes %}
-		<li>{{ transacao.descricao }} - {{ transacao.valor }}
-			- {{ transacao.observacoes }} - {{ transacao.data }} 
-			<a href="{% url 'url_update' transacao.id %}">
-				<button type="button">Atualizar</button>
-			</a>
-			<a href="{% url 'url_delete' transacao.id %}">
-				<button type="button">Excluir</button>
-			</a>
+		<li><u>{{ transacao.descricao }}</u> - <em>R${{ transacao.valor }}</em>
+			- {{ transacao.observacoes }} - {{ transacao.data }}
+			<strong>
+				<a href="{% url 'url_update' transacao.id %}">
+					<br>
+					<button type="button">Editar</button>
+				</a>
+				<a href="{% url 'url_delete' transacao.id %}">
+					<button type="button">Excluir</button>
+				</a>
+			</strong>
+			<hr>
 		</li>
 	{% endfor %}
 	<br/>
@@ -28,4 +34,5 @@
 	</a>
 </ul>
 </body>
+
 </html>
